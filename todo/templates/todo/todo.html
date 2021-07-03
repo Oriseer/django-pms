@@ -1,0 +1,76 @@
+{% extends 'todo/base.html' %}
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+<div class="container-fluid">
+    <div class="row">
+        {% for todo in todos %}
+            {% if todo.todo_mode == 'issues' %}
+            <div class="col-lg-4">
+                <div class="card card-margin text-white">
+                    <div class="card-header no-border bg-danger">
+                        <h5 class="card-title">{{todo.todo_mode}} - {{todo.todo_created}}</h5>
+                    </div>
+                    <div class="card-body pt-0">
+                        <div class="widget-49">
+                            <div class="widget-49-title-wrapper">
+                                <div class="widget-49-date-primary">
+                                </div>
+                                <div class="widget-49-meeting-info">
+                                    <span class="widget-49-pro-title">{{todo.todo_name}}</span>
+                                    <span> {{todo.todo_modified}} </span>
+                                </div>
+                            </div>
+                            {{todo.todo_description}}
+                            {{todo.todo_status}}
+                            <div class="widget-49-meeting-action">
+                                <a href="{% url 'todo:todo-update' pk=todo.id%}" class="btn btn-outline-info">Edit</a>
+                                <a href="{% url 'todo:todo-delete' pk=todo.id%}" class="btn btn-danger">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="col-lg-4">
+                <div class="card card-margin text-white">
+                    <div class="card-header no-border bg-info">
+                        <h5 class="card-title">{{todo.todo_mode}} - {{todo.todo_created}}</h5>
+                    </div>
+                    <div class="card-body pt-0">
+                        <div class="widget-49">
+                            <div class="widget-49-title-wrapper">
+                                <div class="widget-49-date-primary">
+                                </div>
+                                <div class="widget-49-meeting-info">
+                                    <span class="widget-49-pro-title">{{todo.todo_name}}</span>
+                                    <span> {{todo.todo_modified}} </span>
+                                </div>
+                            </div>
+                            {{todo.todo_description}}
+                            {{todo.todo_status}}
+                            <div class="widget-49-meeting-action">
+                                <a href="{% url 'todo:todo-update' pk=todo.id%}" class="btn btn-outline-info">Edit</a>
+                                <a href="{% url 'todo:todo-delete' pk=todo.id%}" class="btn btn-danger">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {% endfor %}
+            <div class="d-flex justify-content-center">
+            <div class="col-md-5 col-lg-5 col-sm-5 col-xs-5">
+                <div class="white-box">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{form|crispy}}
+                        <button class="btn btn-success" type="submit">Create TODO</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

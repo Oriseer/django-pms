@@ -5,13 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Personal Management{% endblock title %}</title>
+    {% load static %}
     {% load bootstrap4 %}
     {% bootstrap_css %}
     {% bootstrap_javascript jquery=True %}
+    <link rel="canonical" href="" />
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href=" {% static 'plugins/images/favicon.png' %}">
+    <!-- Custom CSS -->
+    <link href=" {% static 'plugins/bower_components/chartist/dist/chartist.min.css' %} " rel="stylesheet">
+    <link rel="stylesheet" href=" {% static 'plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css' %} ">
+    <!-- Custom CSS -->
+    <link href=" {% static 'css/style.min.css' %} " rel="stylesheet">
+    <link href=" {% static 'css/style.css' %} " rel="stylesheet">
 </head>
 <body>
+    {% include 'todo/side_nav.html' %}
     {% block content %}
         
     {% endblock content %}
+    <script src=" {% static 'plugins/bower_components/jquery/dist/jquery.min.js' %} "></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src=" {% static 'bootstrap/dist/js/bootstrap.bundle.min.js' %} "></script>
+    <script src=" {% static 'js/app-style-switcher.js' %} "></script>
+    <script src=" {% static 'plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js' %} "></script>
+    <!--Wave Effects -->
+    <script src=" {% static 'js/waves.js' %} "></script>
+    <!--Menu sidebar -->
+    <script src=" {% static 'js/sidebarmenu.js' %} "></script>
+    <!--Custom JavaScript -->
+    <script src=" {% static 'js/custom.js' %} "></script>
+    <!--This page JavaScript -->
+    <!--chartis chart-->
+    <script src=" {% static 'plugins/bower_components/chartist/dist/chartist.min.js' %} "></script>
+    <script src=" {% static 'plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js' %} "></script>
+    <script src=" {% static 'js/pages/dashboards/dashboard1.js' %} "></script>
 </body>
 </html>

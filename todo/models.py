@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 class Todo(models.Model):
@@ -8,7 +9,7 @@ class Todo(models.Model):
     )
     MODE = (
         ('issues', 'issues'),
-        ('goal', 'goal')
+        ('Goal', 'Goal')
     )
     todo_name = models.CharField(max_length=200)
     todo_description = models.TextField(max_length=250)
@@ -19,4 +20,8 @@ class Todo(models.Model):
 
     def __str__(self):
         return self.todo_name
+
+    
+    
+    
     
